@@ -1,0 +1,12 @@
+.dropdown {
+    margin: 0 30px;
+    position: relative;    
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}

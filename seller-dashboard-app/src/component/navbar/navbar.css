@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px black solid;
+}
+.left-side-nav {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+.logged-user {
+    /* margin: 0px 3 */
+}
+.right-side-nav {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
