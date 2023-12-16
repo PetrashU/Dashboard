@@ -1,1 +1,9 @@
-// This is page with aspects that are used for calculating quality level
+import React from 'react'
+
+const QualityAspectsPage = () => {
+  return (
+    <div>QualityAspectsPage</div>
+  )
+}
+
+export default QualityAspectsPage
