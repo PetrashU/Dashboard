@@ -1,1 +1,9 @@
-// This is for page with list of reviews
+import React from 'react'
+
+const ReviewsPage = () => {
+  return (
+    <div>ReviewsPage</div>
+  )
+}
+
+export default ReviewsPage
