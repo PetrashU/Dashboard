@@ -2,12 +2,20 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./login.css"
 
+type userType = {
+    userName : string,
+    password : string
+}
+const initUser = {
+    userName : '',
+    password : ''
+}
+
 const Login = () => {
-    const [user,setUser] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const [user,setUser] = useState<userType>(initUser);
     const nav = useNavigate();
 
-    const handleOnSubmit = (e : any) => {
+    const handleOnSubmit = (e : React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         //autentykacja tutaj
         nav('/home')
@@ -27,8 +35,8 @@ const Login = () => {
                         id='user'
                         name='user'
                         type='text'
-                        value={user}
-                        onChange={(e) => setUser(e.target.value)}
+                        value={user.userName}
+                        onChange={(e) => setUser({...user, userName : e.target.value})}
                     />
                 </div>
                 <div className='form-group-password'>
@@ -39,12 +47,12 @@ const Login = () => {
                         id='password'
                         name='password'
                         type='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={user.password}
+                        onChange={(e) => setUser({ ...user, password: e.target.value })}
                     />
                 </div>
                 <button onClick={handleOnSubmit}>
-                    Submit
+                    ZALOGUJ
                 </button>
             </form>
         </div>

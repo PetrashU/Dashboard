@@ -1,13 +1,16 @@
 .login-container {
+    font-family: 'Noto Sans';
     position: relative;
     height: 100vh;
+    background-color: var(--bkg-clr);
 }
 .form-container {
+    font-size : 22px;
     height: 60%;
     width: 60%;
     max-width: 600px;
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 5px;
     position: absolute;
     left: 50%;
     top: 45%;
@@ -16,33 +19,59 @@
     flex-direction: column;
     justify-content: space-evenly;
     margin: 0 auto;
-    width: 80%;
-}
-.form-group-user {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: 0 auto;
-    /* margin-bottom: 40px; */
-}
-.form-group-password {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: 0 auto;
+    background-color: var(--white-clr);
 }
 .form-container h2 {
     width: 80%;
     margin: 0 auto;
 }
-
+.form-group-user {
+    font-size : 16px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.form-group-user label {
+    margin-bottom: 5px;
+}
+.form-group-password {
+    font-size : 16px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.form-group-password label {
+    margin-bottom: 5px;
+}
 .form-container input {
-    padding: 10px 0;
+    font-size: 13px;
+    padding: 13px 10px;
     border: 1px solid black;
-    border-radius: 8px;
+    border-radius: 5px;
+    background-color: var(--bkg-clr);
 }
 .form-container button {
+    font-size: 12px;
+    font-weight: bold;
+    color:  var(--white-clr);
     width: 80%;
     margin:0 auto;
-    padding: 7px 0px
+    margin-bottom: 15px;
+    padding: 13px 0px;
+    background-color: var(--default-button-clr);
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-container button:hover {
+    background-color: var(--hover-button-clr);
+}
+*:focus {
+    outline: none;
 }
