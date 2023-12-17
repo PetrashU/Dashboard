@@ -1,4 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
 body {
     margin: 0;
     padding: 0;
+}
+
+:root {
+    --bkg-clr : #F9F9F9;
+    --default-button-clr : #FF8000;
+    --hover-button-clr : #E67300;
+    --white-clr : #FFFFFF;
 }

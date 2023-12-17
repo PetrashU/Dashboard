@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Login from './page/login/Login';
-import { Route, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, useNavigate, useSearchParams } from 'react-router-dom';
 import Dashboard from './page/dashboard/Dashboard';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { RootState } from './redux/store/authStore';
+import { reLogin } from './redux/reducer/authSlice';
 
 function App() {
     const routes = createBrowserRouter([
@@ -16,7 +19,7 @@ function App() {
     ])
 
     return (
-      <RouterProvider router={routes}/>
+        <RouterProvider router={routes}/>
     );
 }
 
