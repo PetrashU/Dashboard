@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./login.css"
-
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store/authStore';
+import { login } from '../../redux/reducer/authSlice';
 type userType = {
     userName : string,
     password : string
@@ -13,12 +15,32 @@ const initUser = {
 
 const Login = () => {
     const [user,setUser] = useState<userType>(initUser);
+    const dispatchAuth = useDispatch();
+    const isAuthenticated = useSelector((state : RootState) => {
+        return state.auth.isAuthenticated
+    })
     const nav = useNavigate();
+
+    useEffect(() => {
+        if(isAuthenticated) {
+            nav('/home')
+        }
+    },[isAuthenticated])
 
     const handleOnSubmit = (e : React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
-        //autentykacja tutaj
-        nav('/home')
+        const isValidated = validator()
+        // walidacja w przyslosci i wyswietlanie error msg 
+        dispatchAuth(login())
+    }
+    const validator = () => {
+        if(!user) {
+            return false
+        }
+        const isValidaPassword= user.password.length >= 5;
+        const isValidaUserName = user.userName.length >= 5;
+
+        return isValidaPassword && isValidaUserName
     }
     
     return (

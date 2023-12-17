@@ -1,22 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./navbar.css"
 import { useNavigate } from 'react-router-dom'
 import Dropdown from '../dropdown/Dropdown';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/reducer/authSlice';
+import { RootState } from '../../redux/store/authStore';
 
 const Navbar = () => {
-    const dropdownAcc: string[] = ["Account#1", "Account#2", "Account#3"]
-    const dropdownLang: string[] = ["Ang", "Pol"]
+    const { isAuthenticated, profiles, user } = useSelector((state : RootState) => {
+        return state.auth;
+    })
+    const dispatchAuth = useDispatch();
+
     const nav = useNavigate();
+    const dropdownLang: string[] = ["Ang", "Pol"]
+
+    useEffect(() => {
+        if(!isAuthenticated) {
+            nav("/")
+        }
+    },[isAuthenticated])
+
     const handleLogout = () => {
-        //logout
-        nav('/')
+        dispatchAuth(logout())
     }
     return (
         <div className='navbar'>
             <div className='left-side-nav'>
-                <p className='logged-user'>Logged user</p>
+                <p className='logged-user'>{ user }</p>
                 <Dropdown 
-                    dropdownContent={dropdownAcc}
+                    dropdownContent={profiles}
                     dropdownTitle='Account'
                 />
                 <Dropdown 
