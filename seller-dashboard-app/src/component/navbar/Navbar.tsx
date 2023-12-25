@@ -41,7 +41,7 @@ const Navbar = () => {
                 <div>
                     Ksiezyc/slonce
                 </div>
-                <button onClick={handleLogout}>
+                <button onClick={handleLogout} className='logout-button'>
                     Wyloguj
                 </button>
             </div>

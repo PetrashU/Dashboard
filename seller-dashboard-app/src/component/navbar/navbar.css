@@ -3,6 +3,12 @@
     justify-content: space-between;
     align-items: center;
     border: 1px black solid;
+    background-color: #0060BF;
+    color: white;
+    font-family: 'Noto Sans';
+    font-size: 12px;
+    line-height: 16.34px;
+    font-weight: 700;
 }
 .left-side-nav {
     display: flex;
@@ -16,4 +22,16 @@
     display: flex;
     align-items: center;
     margin-right: 20px;
+}
+.logout-button {
+    width: 107.41px;
+    height: 29.58px;
+    border: 1px black solid;
+    border-radius: 4px;
+    background-color: #E67300;
+    color: white;
+    font-family: 'Noto Sans';
+    font-size: 12px;
+    line-height: 16.34px;
+    font-weight: 700;
 }
