@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./login.css"
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/authStore';
+import { RootState } from '../../redux/store/store';
 import { login } from '../../redux/reducer/authSlice';
 type userType = {
     userName : string,
