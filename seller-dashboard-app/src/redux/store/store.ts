@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import  authReducer  from "../reducer/authSlice";
-import DarkModeReducer from "../reducer/darkModeSlice";
+import darkModeReducer from "../reducer/darkModeSlice";
+import languageReducer from "../reducer/languageSlice";
 
 
 export const store = configureStore({
     reducer : {
          auth : authReducer,
-         darkMode: DarkModeReducer,
+         darkMode: darkModeReducer,
+         language: languageReducer,
     }
 })
 
