@@ -4,45 +4,71 @@ import { useNavigate } from 'react-router-dom'
 import Dropdown from '../dropdown/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/reducer/authSlice';
-import { RootState } from '../../redux/store/authStore';
+import { RootState } from '../../redux/store/store';
+import { toggleDarkMode } from '../../redux/reducer/darkModeSlice';
+import { changeLanguage } from '../../redux/reducer/languageSlice';
+import { current } from '@reduxjs/toolkit';
 
 const Navbar = () => {
-    const { isAuthenticated, profiles, user } = useSelector((state : RootState) => {
+    const { isAuthenticated, profiles, user } = useSelector((state: RootState) => {
         return state.auth;
     })
-    const dispatchAuth = useDispatch();
+    const { isDarkModeOn } = useSelector((state: RootState) => {
+        return state.darkMode;
+    })
+    const language = useSelector((state: RootState) => {
+        return state.language.currentLanguage;
+    })
+    const dispatch = useDispatch();
 
     const nav = useNavigate();
-    const dropdownLang: string[] = ["Ang", "Pol"]
+    const dropdownLang: Record<string,string[]> = {
+        English: ['Polish', 'English'],
+        Polish: ['Angielski', 'Polski'],
+    };
 
     useEffect(() => {
-        if(!isAuthenticated) {
+        if (!isAuthenticated) {
             nav("/")
         }
-    },[isAuthenticated])
+    }, [isAuthenticated])
 
     const handleLogout = () => {
-        dispatchAuth(logout())
+        dispatch(logout())
     }
+
+    const handleModeChange = () => {
+        dispatch(toggleDarkMode());
+    }
+
+    const handleLanguageChange = (newlanguage:string) => {
+        dispatch(changeLanguage(newlanguage));
+    }
+    const handleAccountChange = () => {
+        
+    }
+
     return (
         <div className='navbar'>
             <div className='left-side-nav'>
-                <p className='logged-user'>{ user }</p>
-                <Dropdown 
+                <p className='logged-user'>{user}</p>
+                <Dropdown
                     dropdownContent={profiles}
-                    dropdownTitle='Account'
+                    dropdownTitle={language === 'English' ? 'Account' : 'Konto'}
+                    onSelect={handleAccountChange}
                 />
-                <Dropdown 
-                    dropdownContent={dropdownLang}
-                    dropdownTitle='Language'
+                <Dropdown
+                    dropdownContent={dropdownLang[language]}
+                    dropdownTitle={language === 'English' ? 'Language' : 'Język'}
+                    onSelect={handleLanguageChange}
                 />
             </div>
             <div className='right-side-nav'>
-                <div>
-                    Ksiezyc/slonce
-                </div>
-                <button onClick={handleLogout}>
-                    Wyloguj
+                <button className="mode-toggle" onClick={handleModeChange}>
+                    {isDarkModeOn ? '☽' : '☼'}
+                </button>
+                <button onClick={handleLogout} className='logout-button'>
+                    {language === 'English' ? 'Log out' : 'Wyloguj'}
                 </button>
             </div>
         </div>
