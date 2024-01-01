@@ -1,0 +1,40 @@
+.widget-title{
+    background-color: #80008091;
+    color: black;
+    height: 33.42px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+    font-family: 'Noto Sans';
+    font-weight: 700;
+    font-size: 12px;
+
+}
+.reviews-container{
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 45%;
+    height: 60%;
+}
+.reviews-list th, .reviews-list td {
+    text-align: left;
+    padding: 8px;
+}
+
+.reviews-list th {
+    background-color: #f2f2f2;
+}
+
+.reviews-list tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.reviews-list tr:hover {
+    background-color: #ddd;
+}
+
+.reviews-list td {
+    border-bottom: 1px solid #ddd;
+}
