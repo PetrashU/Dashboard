@@ -42,4 +42,11 @@ export const reviews: Review[] = [
         text: "Overheats quickly and battery life is poor.",
         stars: 1
     },
+    {
+        id: 6,
+        language: "Polish",
+        product: "Karta pamięci",
+        text: "Dobra dla swojej ceny",
+        stars: 4
+    },
 ];
