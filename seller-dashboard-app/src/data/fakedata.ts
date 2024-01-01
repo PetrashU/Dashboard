@@ -50,3 +50,50 @@ export const reviews: Review[] = [
         stars: 4
     },
 ];
+
+export type ProductSale = {
+    id: number;
+    productName: string;
+    salesNumber: number;
+    revenue: number;
+  };
+  
+  export const productSalesData: ProductSale[] = [
+    {
+      id: 1,
+      productName: "Statyw Fotograficzny",
+      salesNumber: 15,
+      revenue: 450
+    },
+    {
+      id: 2,
+      productName: "Aparat Cyfrowy",
+      salesNumber: 6,
+      revenue: 24000
+    },
+    {
+      id: 3,
+      productName: "Obiektyw 50mm",
+      salesNumber: 4,
+      revenue: 12000
+    },
+    {
+      id: 4,
+      productName: "Torba na Aparat",
+      salesNumber: 13,
+      revenue: 7000
+    },
+    {
+      id: 5,
+      productName: "Mikrofon Kierunkowy",
+      salesNumber: 8,
+      revenue: 5000
+    },
+    {
+      id: 6,
+      productName: "Oświetlenie LED",
+      salesNumber: 10,
+      revenue: 400
+    }
+  ];
+  
