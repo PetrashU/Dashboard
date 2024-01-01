@@ -5,13 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStar as farStar } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
+import { useNavigate } from 'react-router-dom';
 
 const ReviewsWidget = () => {
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [visibleReviews, setVisibleReviews] = useState(5);
   const language = useSelector((state: RootState) => {
     return state.language.currentLanguage;
-})
+  })
 
   const reviewsToShow = () => {
     if (selectedFilter === 'All') {
@@ -29,8 +30,10 @@ const ReviewsWidget = () => {
     setVisibleReviews(5);
   };
 
-  const handleMoreButtonClick = () => {
-    //TODO redirection
+  const nav = useNavigate();
+
+  const handleMoreButtonClick = (filter: string) => {
+    nav(`/reviews?filter=${filter}`);
   };
 
   const renderStars = (rating: number): JSX.Element[] => {
@@ -100,8 +103,8 @@ const ReviewsWidget = () => {
         )}
       </div>
       <div className='redirect-button-container'>
-        <button className="redirect-button" onClick={handleMoreButtonClick}>
-        {language === 'English' ? 'SHOW MORE' : 'ZOBACZ WIĘCEJ'}
+        <button className="redirect-button" onClick={() => handleMoreButtonClick(selectedFilter)}>
+          {language === 'English' ? 'SHOW MORE' : 'ZOBACZ WIĘCEJ'}
         </button>
       </div>
     </div>
