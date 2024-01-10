@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { loginService, logoutService, reLoginService } from "../service/loginService";
+
 export type AuthType = {
     isAuthenticated : boolean,
     profiles : string[],
@@ -9,7 +10,7 @@ export type AuthType = {
 const initAuth : AuthType= {
     isAuthenticated : false,
     profiles : ["Robert#1", "Janusz#2"],
-    user : "John"
+    user : "Robert#1"
 }
 
 export const authSlice = createSlice({
@@ -24,6 +25,9 @@ export const authSlice = createSlice({
         },
         logout : (state : AuthType) => {
             logoutService(state)
+        },
+        changeAcc : (state : AuthType, action : PayloadAction<string>) => {
+            state.user = action.payload
         }
     }
 }) 

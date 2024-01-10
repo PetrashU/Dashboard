@@ -30,7 +30,7 @@ const Login = () => {
     const handleOnSubmit = (e : React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         const isValidated = validator()
-        // walidacja w przyslosci i wyswietlanie error msg 
+        // walidacja w przyslosci i wyswietlanie error msg
         dispatchAuth(login())
     }
     const validator = () => {

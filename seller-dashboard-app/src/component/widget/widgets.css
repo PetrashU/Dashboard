@@ -1,6 +1,7 @@
 .reviews-container,
 .offers-rank-widget,
-.orders-widget {
+.orders-widget,
+.sale-quality-wdg {
     position: absolute;
     border: 1px solid black;
     padding-bottom: 10px;
@@ -20,7 +21,10 @@
     top: 80px;
     right: 20px;
 }
-
+.sale-quality-wdg {
+    top : 350px;
+    left: 500px;
+}
 
 .widget-title {
     background-color: #80008091;
