@@ -2,17 +2,20 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store/store'
 import { translateUtil } from '../../util/translateUtil'
+import { useNavigate } from 'react-router-dom'
+import { SALES_PAGE_URL } from '../../data/urls'
 
 const SaleQualityWidg = () => {
   const language = useSelector((state : RootState) => {
       return state.language.currentLanguage;
   })
   const data : any = translateUtil({ lang : language, wdg : "saleQualityWidg"})
+  const nav = useNavigate();
 
   return (
     <div className='sale-quality-wdg'>
-      <h2>{ data?.qualityOfSale }</h2>
-      <table>
+      <div className='widget-title'>{ data?.qualityOfSale }</div>
+      <table className='orders-table'>
         <thead>
           <tr>
             <th>{  data?.ratingCategory }</th>
@@ -47,7 +50,12 @@ const SaleQualityWidg = () => {
           </tr>
         </tbody>
       </table>
-      <button>{ data?.showMore } </button>
+      <button 
+        onClick={() => { nav(SALES_PAGE_URL) }}
+        className='redirect-button'
+      >
+        { data?.showMore } 
+      </button>
     </div>
   )
 }

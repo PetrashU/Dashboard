@@ -11,18 +11,30 @@ const translateSalesChartWidg = (lang : string) => {
         return {
             saleChartTitle : "Wykres sprzedaży",
             chartMeasure : "Miara wykresu",
+            turnover : "Obrót",
+            sellNumber : "Liczba sprzedanych sztuk",
+            timeScope : "Zakres czasu",
+            today : "Dziś",
+            thisWeek : "Obecny tydzień",
+            lastWeek : "Poprzedni tydzień",
             presentationType : "Prezentacja",
             barChart : "Wykres słupkowy",
-            linearChar : "Wykres liniowy",
+            linearChart : "Wykres liniowy",
             showMore : "Pokaż więcej",
         }
     } else if(lang === "English") {
         return {
             saleChartTitle : "Sale chart",
+            turnover : "Turnover",
+            sellNumber : "Number of sold products",
+            timeScope : "Time scope",
+            today : "Today",
+            thisWeek : "This week",
+            lastWeek : "Last week",
             chartMeasure : "Chart measure",
             presentationType : "Presentation type",
             barChart : "Bar chart",
-            linearChar : "Linear chart",
+            linearChart : "Linear chart",
             showMore : "Show more",
         }
     } else {}

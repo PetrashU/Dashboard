@@ -5,16 +5,26 @@ import OffersRankWidget from '../../component/widget/OffersRankWidg'
 import OrdersWidg from '../../component/widget/OrdersWidg'
 import SaleQualityWidg from '../../component/widget/SaleQualityWidg'
 import SalesChartWidg from '../../component/widget/SalesChartWidg'
+import { Outlet, useLocation } from 'react-router-dom'
+import { HOME_PAGE_URL } from '../../data/urls'
 
 const Dashboard = () => {
+  const currLocation = useLocation();
+  const isChildrenRendered = currLocation.pathname !== HOME_PAGE_URL;
   return (
     <div className='background'>
         <Navbar/>
-        <ReviewsWidget/>
-        <OffersRankWidget/>
-        <OrdersWidg/>
-        <SaleQualityWidg/>
-        <SalesChartWidg/>
+        {
+          isChildrenRendered ? <Outlet/> 
+          : 
+          <>
+            {/* <ReviewsWidget/> */}
+            {/* <OffersRankWidget/> */}
+            {/* <OrdersWidg/> */}
+            {/* <SaleQualityWidg/> */}
+            <SalesChartWidg/>
+          </>
+        }
     </div>
   )
 }

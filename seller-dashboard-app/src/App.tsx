@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
 import Login from './page/login/Login';
-import { RouterProvider, createBrowserRouter, useNavigate, useSearchParams } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter} from 'react-router-dom';
 import Dashboard from './page/dashboard/Dashboard';
 import ReviewsPage from './page/dataPages/reviewsPage';
-import { Provider, useDispatch, useSelector } from 'react-redux';
-import { RootState } from './redux/store/store';
-import { reLogin } from './redux/reducer/authSlice';
+import QualityAspectsPage from './page/dataPages/QualityAspectsPage';
+import { HOME_PAGE_URL, LOGIN_PAGE_URL, SALES_PAGE_URL } from './data/urls';
 
 function App() {
     const routes = createBrowserRouter([
       {
-        path: "/",
+        path: LOGIN_PAGE_URL,
         element : <Login/>
       },
       {
-        path : "/home",
-        element: <Dashboard/>
+        path : HOME_PAGE_URL,
+        element: <Dashboard/>,
+        children : [{
+          path : SALES_PAGE_URL,
+          element : <QualityAspectsPage/>
+        }]
       },
       {
       path : "/reviews",
