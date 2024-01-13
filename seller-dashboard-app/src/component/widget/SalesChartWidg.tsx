@@ -7,51 +7,9 @@ import { useReducer, useState } from 'react'
 import { CHART_TYPE, MEASURE_TYPE, TIME_SCOPE } from '../../data/constant'
 import Chart from 'react-google-charts'
 import { chartDataResolver } from '../../util/chartDataResolver'
+import { CASES, chartReducer, initChartSettings } from '../../util/chartReducer'
 
-export type ChartSettingsType = {
-  measureType : string,
-  timeScope : string,
-  presentationType : string
-} 
 
-type ChartAction = {
-  type : CASES
-  payload : string
-}
-
-const enum CASES  {
-  MEASURE, TIME, PRESENTATION
-} 
-
-const chartReducer = (state : ChartSettingsType , action : ChartAction) => {
-  switch(action.type) {
-    case CASES.MEASURE:
-      return {
-        ...state,
-        measureType : action.payload 
-      }
-    case CASES.TIME: 
-      return {
-        ...state,
-        timeScope : action.payload
-      }
-    case CASES.PRESENTATION:
-      return {
-        ...state,
-        presentationType : action.payload
-      }
-    default:
-      return state;
-  }
-}
-
-const initChartSettings : ChartSettingsType = {
-  measureType : MEASURE_TYPE.TURNOVER,
-  timeScope : TIME_SCOPE.DAY,
-  presentationType : CHART_TYPE.BAR_TYPE,
-
-}
-const data = [{name: 'Page A', uv: 400, pv: 2400, amt: 2400}];
 const SalesChartWidg = () => {
   const [dropdownMode, setDropdownMode] = useState({ chatM : false, timeS : false, presType : false })
   const [chartSettings, dispatch] = useReducer(chartReducer, initChartSettings);
@@ -59,8 +17,9 @@ const SalesChartWidg = () => {
       return state.language.currentLanguage
   })
   const data : any = translateUtil({ lang : languge , wdg : "salesChartWidg"})
-  const chartData : any = chartDataResolver(chartSettings);
+  const chartData : any = chartDataResolver({ settings : chartSettings, translation : data });
 
+  
   return (
     <div className='sales-chart-widg'>
       <div className='widg-title'>
@@ -114,7 +73,7 @@ const SalesChartWidg = () => {
       </div>
       <Chart  
         chartType={chartSettings.presentationType === CHART_TYPE.LINEAR_TYPE ? "Line" : "Bar"}  
-        data={[["Age", "Weight"], [4, 5.5], [8, 12]]}
+        data={ chartData }
       />
       <button>{ data.showMore }</button>
     </div>
