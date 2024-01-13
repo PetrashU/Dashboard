@@ -10,4 +10,6 @@ body {
     --default-button-clr : #FF8000;
     --hover-button-clr : #E67300;
     --white-clr : #FFFFFF;
+
+    --nav-height : 5vh;
 }

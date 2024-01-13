@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: var(--nav-height);
     border: 1px black solid;
     background-color: #0060BF;
     color: white;
@@ -42,8 +43,8 @@
 }
 .logout-button {
     cursor: pointer;
-    width: 107.41px;
-    height: 29.58px;
+    width: 90px;
+    height: 26px;
     border: 1px black solid;
     border-radius: 4px;
     background-color: #E67300;

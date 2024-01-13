@@ -9,7 +9,6 @@ import Chart from 'react-google-charts'
 import { chartDataResolver } from '../../util/chartDataResolver'
 import { CASES, chartReducer, initChartSettings } from '../../util/chartReducer'
 
-
 const SalesChartWidg = () => {
   const [dropdownMode, setDropdownMode] = useState({ chatM : false, timeS : false, presType : false })
   const [chartSettings, dispatch] = useReducer(chartReducer, initChartSettings);
@@ -22,10 +21,10 @@ const SalesChartWidg = () => {
   
   return (
     <div className='sales-chart-widg'>
-      <div className='widg-title'>
+      <div className='widget-title'>
         { data.saleChartTitle }
       </div>
-      <div>
+      <div className='filter-buttons'>
         <button 
           onMouseEnter={() => setDropdownMode((prev) => ({ ...prev, chatM : true})) }
           onMouseLeave={() => setDropdownMode((prev) => ({ ...prev, chatM : false}))}
@@ -72,10 +71,14 @@ const SalesChartWidg = () => {
         </button>
       </div>
       <Chart  
-        chartType={chartSettings.presentationType === CHART_TYPE.LINEAR_TYPE ? "Line" : "Bar"}  
+        chartType={ chartSettings.presentationType === CHART_TYPE.LINEAR_TYPE ? "Line" : "Bar" }  
         data={ chartData }
       />
-      <button>{ data.showMore }</button>
+      <button 
+        className='redirect-button'
+      >
+        { data.showMore }
+      </button>
     </div>
   )
 }

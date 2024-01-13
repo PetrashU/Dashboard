@@ -17,13 +17,19 @@ const Dashboard = () => {
         {
           isChildrenRendered ? <Outlet/> 
           : 
-          <>
-            {/* <ReviewsWidget/> */}
-            {/* <OffersRankWidget/> */}
-            {/* <OrdersWidg/> */}
-            {/* <SaleQualityWidg/> */}
-            <SalesChartWidg/>
-          </>
+          <div className='widgets'>
+            <div className="left-side">
+              <ReviewsWidget/>
+              <OffersRankWidget/>
+            </div>
+            <div className="center-side">
+              <SalesChartWidg/>
+            </div>
+            <div className="right-side">
+              <OrdersWidg/>
+              <SaleQualityWidg/>
+            </div>
+          </div>
         }
     </div>
   )
