@@ -3,7 +3,8 @@ import { RouterProvider, createBrowserRouter} from 'react-router-dom';
 import Dashboard from './page/dashboard/Dashboard';
 import ReviewsPage from './page/dataPages/reviewsPage';
 import QualityAspectsPage from './page/dataPages/QualityAspectsPage';
-import { HOME_PAGE_URL, LOGIN_PAGE_URL, SALES_PAGE_URL } from './data/urls';
+import { CHART_PAGE_URL, HOME_PAGE_URL, LOGIN_PAGE_URL, SALES_PAGE_URL } from './data/urls';
+import ChartPage from './page/dataPages/ChartPage';
 
 function App() {
     const routes = createBrowserRouter([
@@ -17,6 +18,10 @@ function App() {
         children : [{
           path : SALES_PAGE_URL,
           element : <QualityAspectsPage/>
+        },
+        {
+          path : CHART_PAGE_URL,
+          element : <ChartPage/>
         }]
       },
       {

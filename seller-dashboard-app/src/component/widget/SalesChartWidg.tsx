@@ -4,14 +4,17 @@ import { translateUtil } from '../../util/translateUtil'
 import { BsCaretDown  } from "react-icons/bs"
 import ChartDropdown from '../dropdown/ChartDropdown'
 import { useReducer, useState } from 'react'
-import { CHART_TYPE, MEASURE_TYPE, TIME_SCOPE } from '../../data/constant'
+import { CHART_TYPE } from '../../data/constant'
 import Chart from 'react-google-charts'
 import { chartDataResolver } from '../../util/chartDataResolver'
 import { CASES, chartReducer, initChartSettings } from '../../util/chartReducer'
+import { useNavigate } from 'react-router-dom'
+import { CHART_PAGE_URL } from '../../data/urls'
 
 const SalesChartWidg = () => {
   const [dropdownMode, setDropdownMode] = useState({ chatM : false, timeS : false, presType : false })
   const [chartSettings, dispatch] = useReducer(chartReducer, initChartSettings);
+  const nav = useNavigate();
   const languge = useSelector((state : RootState) => {
       return state.language.currentLanguage
   })
@@ -73,9 +76,12 @@ const SalesChartWidg = () => {
       <Chart  
         chartType={ chartSettings.presentationType === CHART_TYPE.LINEAR_TYPE ? "Line" : "Bar" }  
         data={ chartData }
+        width="50%"
+        height="60%"
       />
       <button 
         className='redirect-button'
+        onClick={(e) => { nav(CHART_PAGE_URL) }}
       >
         { data.showMore }
       </button>

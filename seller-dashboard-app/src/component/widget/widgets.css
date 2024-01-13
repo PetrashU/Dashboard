@@ -1,7 +1,6 @@
 .widgets {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
     height: calc(100vh - var(--nav-height) - 2px);
 }
@@ -9,14 +8,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    flex-grow: 1;
 }
 .center-side {
-
+    flex-grow: 500;
+    margin: 10px;
 }
 .right-side {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    flex-grow: 1;
 }
 .reviews-container,
 .offers-rank-widget {
@@ -26,18 +28,18 @@
 .sale-quality-wdg {
     margin-right: 10px;
 }
-
-
 .reviews-container,
 .offers-rank-widget,
 .orders-widget,
-.sale-quality-wdg
+.sale-quality-wdg,
+.sales-chart-widg
 {
-    /* position: absolute; */
     border: 1px solid black;
     padding-bottom: 10px;
 }
-
+.sales-chart-widg {
+    min-width: 620px;
+}
 .widget-title {
     background-color: #80008091;
     color: black;

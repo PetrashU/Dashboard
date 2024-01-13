@@ -11,8 +11,3 @@ export const MEASURE_TYPE = {
     TURNOVER : "turnover",
     SOLD_NUMBER : "sold number"
 }
-const data=[["Age", "Weight"], [4, 5.5], [8, 12]]
-
-export const chartData = {
-    
-}
