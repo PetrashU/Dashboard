@@ -66,27 +66,37 @@ const translateSaleQualityWidg = (lang : string) => {
     if(lang === "Polish") {
         return {
             qualityOfSale : "Jakość sprzedaży",
-            ratingCategory : "Kategoria oceny",
-            rating : "Ocena",
-            salesResults : "Wyniki sprzedaży",
-            salesSkills : "Umiejętności sprzedażowe",
-            responsibility : "Odpowiedzialność",
+            ratingCategory : "KATEGORIA OCENY",
+            rating : "OCENA",
+            salesResults : "WYNIKI SPRZEDAŻY",
+            salesResultsResult  : 5,
+            salesSkills : "UMIEJĘTNOŚCI SPRZEDAŻOWE",
+            salesSkillsResult : 5,
+            responsibility : "ODPOWIEDZIALNOŚĆ",
+            responsibilityResult : 10,
             overview : "Podsumowanie",
-            ratingQuality : "Ocena jakości",
-            qualityCategory : "Kategoria jakości",
+            ratingQuality : "OCENA JAKOŚCI",
+            ratingQualityResult : "20/50",
+            qualityCategory : "KATEGORIA JAKOŚCI",
+            ratingQualityCategory : "SŁABA",
             showMore : "Zobacz więcej"
         }
     } else if(lang === "English") {
         return {
             qualityOfSale : "Quality of sale",
-            ratingCategory : "Rating category",
-            rating : "Rating",
-            salesResults : "Sales results",
-            salesSkills : "Sales skills",
-            responsibility : "Responosibility",
+            ratingCategory : "RATING CATEGORY",
+            rating : "RATING",
+            salesResultsResult  : 0,
+            salesResults : "SALES RESULTS",
+            salesSkillsResult : 0,
+            salesSkills : "SALES SKILLS",
+            responsibilityResult : 0,
+            responsibility : "RESPONSIBILITY",
             overview : "Overview",
-            ratingQuality : "Quality rating",
-            qualityCategory : "Quality category",
+            ratingQuality : "QUALITY RATING",
+            ratingQualityResult : "20/50",
+            qualityCategory : "QUALITY CATEGORY",
+            ratingQualityCategory : "POOR",
             showMore : "Show more"
         }
     } else {

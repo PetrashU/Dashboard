@@ -11,7 +11,7 @@
     flex-grow: 1;
 }
 .center-side {
-    flex-grow: 500;
+    flex-grow: 10;
     margin: 10px;
 }
 .right-side {
@@ -38,7 +38,8 @@
     padding-bottom: 10px;
 }
 .sales-chart-widg {
-    min-width: 620px;
+    min-width: 520px;
+    height: 90vh;
 }
 .widget-title {
     background-color: #80008091;
@@ -177,7 +178,55 @@
     background-color: #E67300;
 }
 
-/* ChartWidgetPart */
-/* .chart-widg-nav {
+.sale-quality-wdg-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+.sale-quality-wdg-container p {
+    font-family: 'Noto Sans';
+    font-size: 15px;
 
-} */
+}
+.sale-quality-wdg-container button {
+    margin-top: 10px;
+}
+
+.sale-chart-nav {
+    position: relative;
+}
+.sale-chart-nav button {
+    background: #FFECD9;
+    border: 2px solid black;
+    border-left:1px solid black;
+    border-top: 1px solid black;
+    width: 150px;
+    padding: 7.5px 0px;
+    cursor: pointer;
+}
+.sale-chart-nav button:hover {
+    background: #FFD700;
+}
+.sales-chart-wdg-dropdown {
+    position: absolute;
+    cursor: pointer;
+}
+.sales-dropdown-el {
+    width: 146px;
+    padding: 7.5px 0;
+    top: 5;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px whitesmoke solid;
+    background-color: #FFECD9;
+    border: 1px solid black;
+    color: black;
+    font-family: 'Noto Sans';
+    font-size: 12px;
+}
+.sales-dropdown-el:hover {
+    background-color: #FFD8B0;
+}

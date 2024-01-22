@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store/store'
 import { translateUtil } from '../../util/translateUtil'
@@ -15,47 +15,49 @@ const SaleQualityWidg = () => {
   return (
     <div className='sale-quality-wdg'>
       <div className='widget-title'>{ data?.qualityOfSale }</div>
-      <table className='orders-table'>
-        <thead>
-          <tr>
-            <th>{  data?.ratingCategory }</th>
-            <th>{  data?.rating }</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className='sale-quality-wdg-container'>
+        <table className='orders-table qos-table'>
+          <thead>
             <tr>
-              <td>{  data?.salesResults }</td>
-              <td>0</td>  
+              <th>{  data?.ratingCategory }</th>
+              <th>{  data?.rating }</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td>{  data?.salesResults }</td>
+                <td>{ data?.salesResultsResult }</td>  
+              </tr>
+              <tr>
+                <td>{  data?.salesSkills }</td>
+                <td>{ data?.salesSkillsResult }</td>  
+              </tr> 
+              <tr>
+                <td>{  data?.responsibility }</td>
+                <td>{ data?.responsibilityResult }</td>  
+              </tr> 
+          </tbody>
+        </table>
+        <p>{ data?.overview }</p>
+        <table className='orders-table'>
+          <tbody>
+            <tr>
+              <td>{ data?.salesResults }</td>
+              <td>{ data?.ratingQualityResult }</td>
             </tr>
             <tr>
-              <td>{  data?.salesSkills }</td>
-              <td>0</td>  
-            </tr> 
-            <tr>
-              <td>{  data?.responsibility }</td>
-              <td>0</td>  
-            </tr> 
-        </tbody>
-      </table>
-      <h3>{ data?.overview }</h3>
-      <table>
-        <tbody>
-          <tr>
-            <td>{ data?.salesResults }</td>
-            <td>30/50</td>
-          </tr>
-          <tr>
-            <td>{ data?.qualityCategory }</td>
-            <td>a</td>
-          </tr>
-        </tbody>
-      </table>
-      <button 
-        onClick={() => { nav(SALES_PAGE_URL) }}
-        className='redirect-button'
-      >
-        { data?.showMore } 
-      </button>
+              <td>{ data?.qualityCategory }</td>
+              <td>{ data?.ratingQualityCategory }</td>
+            </tr>
+          </tbody>
+        </table>
+        <button 
+          onClick={() => { nav(SALES_PAGE_URL) }}
+          className='redirect-button'
+        >
+          { data?.showMore } 
+        </button>
+      </div>
     </div>
   )
 }

@@ -27,7 +27,7 @@ const SalesChartWidg = () => {
       <div className='widget-title'>
         { data.saleChartTitle }
       </div>
-      <div className='filter-buttons'>
+      <div className='sale-chart-nav'>
         <button 
           onMouseEnter={() => setDropdownMode((prev) => ({ ...prev, chatM : true})) }
           onMouseLeave={() => setDropdownMode((prev) => ({ ...prev, chatM : false}))}
@@ -36,7 +36,7 @@ const SalesChartWidg = () => {
           { 
             dropdownMode.chatM ? 
             <ChartDropdown 
-              data={[data.turnover, data.sellNumber]} 
+              data={[data.turnover, data.soldNumber]} 
               actionType="chatM" 
               changeChartProperty={(prop : string) => { dispatch({ type : CASES.MEASURE , payload : prop}) }}
             /> : null
@@ -73,12 +73,14 @@ const SalesChartWidg = () => {
           }
         </button>
       </div>
-      <Chart  
-        chartType={ chartSettings.presentationType === CHART_TYPE.LINEAR_TYPE ? "Line" : "Bar" }  
-        data={ chartData }
-        width="50%"
-        height="60%"
-      />
+      <div>
+        <Chart  
+          chartType={ chartSettings.presentationType === CHART_TYPE.LINEAR_TYPE ? "Line" : "Bar" }  
+          data={ chartData }
+          width="60%"
+          height="60%"
+        />
+      </div>
       <button 
         className='redirect-button'
         onClick={(e) => { nav(CHART_PAGE_URL) }}

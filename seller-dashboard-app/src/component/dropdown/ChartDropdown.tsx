@@ -14,6 +14,7 @@ const ChartDropdown = ({ data, actionType, changeChartProperty } : ChartDropdown
       if(index === 0) {
         changeChartProperty(MEASURE_TYPE.TURNOVER);
       } else if(index === 1) {
+        console.log(index);
         changeChartProperty(MEASURE_TYPE.SOLD_NUMBER);
       } else {
         changeChartProperty("");
@@ -41,14 +42,14 @@ const ChartDropdown = ({ data, actionType, changeChartProperty } : ChartDropdown
       return changeChartProperty("ERROR")
     }
   }
-  
+  console.log(data)
   return (
-    <div className='dropdown-content'>
+    <div className='sales-chart-wdg-dropdown'>
       {
         data.map((el, index) => (
           <div 
-            key={el}
-            className='dropdown-element'
+            key={index}
+            className='sales-dropdown-el'
             onClick={() => { handleOnClickedEl(el, index) }}
           >
             { el }
