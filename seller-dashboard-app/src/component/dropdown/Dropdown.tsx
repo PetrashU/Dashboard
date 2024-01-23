@@ -3,19 +3,27 @@ import "./dropdown.css"
 type DropdownType = {
     dropdownContent: string[]
     dropdownTitle: string
-    onSelect: (value: string) => void
+    onHandleLangChange: (value: string) => void
+    onHandleAccChange : (value: string) => void
+    dropdownType : string
 }
-const Dropdown = ({ dropdownContent, dropdownTitle, onSelect }: DropdownType) => {
+const Dropdown = ({ dropdownContent, dropdownTitle, onHandleLangChange, onHandleAccChange, dropdownType }: DropdownType) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => setIsOpen(!isOpen);
     const handleItemClick = (item: string) => {
-        if (item === 'Angielski') {
-            item = 'English'
-        } else if (item === 'Polski'){
-            item = 'Polish'
+        if(dropdownType === 'langChange') {
+            if (item === 'Angielski') {
+                item = 'English'
+            } else if (item === 'Polski'){
+                item = 'Polish'
+            }
+            onHandleLangChange(item);
+            setIsOpen(false);
+        } else if(dropdownType === 'accChange') {
+            onHandleAccChange(item);
+            setIsOpen(false);
         }
-        onSelect(item);
-        setIsOpen(false);
+
     };
     return (
         <div className='dropdown'>

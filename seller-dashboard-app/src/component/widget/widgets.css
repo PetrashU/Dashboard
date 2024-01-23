@@ -37,6 +37,9 @@
     border: 1px solid black;
     padding-bottom: 10px;
 }
+.orders-widget {
+   margin-bottom: 40px; 
+}   
 .sales-chart-widg {
     min-width: 520px;
     height: 90vh;
@@ -211,6 +214,7 @@
 .sales-chart-wdg-dropdown {
     position: absolute;
     cursor: pointer;
+    z-index: 10;
 }
 .sales-dropdown-el {
     width: 146px;
@@ -229,4 +233,16 @@
 }
 .sales-dropdown-el:hover {
     background-color: #FFD8B0;
+}
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+}
+.chart {
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
 }

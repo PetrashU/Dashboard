@@ -3,11 +3,10 @@ import "./navbar.css"
 import { useNavigate } from 'react-router-dom'
 import Dropdown from '../dropdown/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../redux/reducer/authSlice';
+import { changeAcc, logout } from '../../redux/reducer/authSlice';
 import { RootState } from '../../redux/store/store';
 import { toggleDarkMode } from '../../redux/reducer/darkModeSlice';
 import { changeLanguage } from '../../redux/reducer/languageSlice';
-import { current } from '@reduxjs/toolkit';
 
 const Navbar = () => {
     const { isAuthenticated, profiles, user } = useSelector((state: RootState) => {
@@ -44,8 +43,8 @@ const Navbar = () => {
     const handleLanguageChange = (newlanguage:string) => {
         dispatch(changeLanguage(newlanguage));
     }
-    const handleAccountChange = () => {
-        // dispatch(changeAcc({ onSele }))
+    const handleAccountChange = (acc : string) => {
+        dispatch(changeAcc(acc))
     }
 
     return (
@@ -55,12 +54,16 @@ const Navbar = () => {
                 <Dropdown
                     dropdownContent={profiles}
                     dropdownTitle={language === 'English' ? 'Account' : 'Konto'}
-                    onSelect={handleAccountChange}
+                    onHandleLangChange={handleLanguageChange}
+                    onHandleAccChange={handleAccountChange}
+                    dropdownType="accChange"
                 />
                 <Dropdown
                     dropdownContent={dropdownLang[language]}
                     dropdownTitle={language === 'English' ? 'Language' : 'Język'}
-                    onSelect={handleLanguageChange}
+                    onHandleLangChange={handleLanguageChange}
+                    onHandleAccChange={handleAccountChange}
+                    dropdownType="langChange"
                 />
             </div>
             <div className='right-side-nav'>

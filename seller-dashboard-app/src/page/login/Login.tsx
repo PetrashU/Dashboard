@@ -29,18 +29,7 @@ const Login = () => {
 
     const handleOnSubmit = (e : React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
-        const isValidated = validator()
-        // walidacja w przyslosci i wyswietlanie error msg
         dispatchAuth(login())
-    }
-    const validator = () => {
-        if(!user) {
-            return false
-        }
-        const isValidaPassword= user.password.length >= 5;
-        const isValidaUserName = user.userName.length >= 5;
-
-        return isValidaPassword && isValidaUserName
     }
     
     return (

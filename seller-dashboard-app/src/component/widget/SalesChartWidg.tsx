@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store/store'
 import { translateUtil } from '../../util/translateUtil'
 import { BsCaretDown  } from "react-icons/bs"
@@ -73,20 +73,22 @@ const SalesChartWidg = () => {
           }
         </button>
       </div>
-      <div>
+      <div className='chart-container'>
         <Chart  
           chartType={ chartSettings.presentationType === CHART_TYPE.LINEAR_TYPE ? "Line" : "Bar" }  
           data={ chartData }
-          width="60%"
-          height="60%"
+          width="90%"
+          height="80%"
+          className='chart'
         />
+        <button 
+          className='redirect-button'
+          onClick={(e) => { nav(CHART_PAGE_URL) }}
+        >
+          { data.showMore }
+        </button>
       </div>
-      <button 
-        className='redirect-button'
-        onClick={(e) => { nav(CHART_PAGE_URL) }}
-      >
-        { data.showMore }
-      </button>
+
     </div>
   )
 }
