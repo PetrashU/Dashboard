@@ -2,7 +2,7 @@
     font-family: 'Noto Sans';
     position: relative;
     height: 100vh;
-    background-color: var(--bkg-clr);
+    background-color: transparent;
 }
 .form-container {
     font-size : 22px;
@@ -19,7 +19,10 @@
     flex-direction: column;
     justify-content: space-evenly;
     margin: 0 auto;
-    background-color: var(--white-clr);
+    background-color: transparent;
+}
+body.dark-mode .form-container {
+    border-color: antiquewhite;
 }
 .form-container h2 {
     width: 80%;
@@ -55,6 +58,12 @@
     border: 1px solid black;
     border-radius: 5px;
     background-color: var(--bkg-clr);
+}
+
+body.dark-mode .form-container input {
+    border-color: antiquewhite;
+    background-color: gray;
+    color: antiquewhite;
 }
 .form-container button {
     font-size: 12px;

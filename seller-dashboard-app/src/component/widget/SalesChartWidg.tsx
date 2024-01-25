@@ -24,7 +24,7 @@ const SalesChartWidg = () => {
       <div className='widget-title'>
         {data.saleChartTitle}
       </div>
-      <div className='sale-chart-nav'>
+      <div className={isDarkModeOn ? 'sale-chart-nav-dark' : "sale-chart-nav"}>
         <button
           onMouseEnter={() => setDropdownMode((prev) => ({ ...prev, chatM: true }))}
           onMouseLeave={() => setDropdownMode((prev) => ({ ...prev, chatM: false }))}

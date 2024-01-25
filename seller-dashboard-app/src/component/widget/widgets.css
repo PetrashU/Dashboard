@@ -64,11 +64,12 @@
     font-family: 'Noto Sans';
 }
 
-.reviews-list td, th, .reviews-list-dark td, th {
+.reviews-list td, .reviews-list th, .reviews-list-dark td, .reviews-list-dark th {
     text-align: left;
     padding: 8px;
     font-size: 12px;
     font-weight: 400;
+    border: none;
 }
 .reviews-list th, .reviews-list-dark th {
     border-bottom: 1px solid black;
@@ -214,10 +215,10 @@
     margin-top: 10px;
 }
 
-.sale-chart-nav {
+.sale-chart-nav, .sale-chart-nav-dark{
     position: relative;
 }
-.sale-chart-nav button {
+.sale-chart-nav button, .sale-chart-nav-dark button {
     background: #FFECD9;
     border: 2px solid black;
     border-left:1px solid black;
@@ -226,7 +227,11 @@
     padding: 7.5px 0px;
     cursor: pointer;
 }
-.sale-chart-nav button:hover {
+.sale-chart-nav-dark button {
+    background: #c5a687;
+    border-color: #575757;
+}
+.sale-chart-nav button:hover, .sale-chart-nav-dark button:hover {
     background: #FFD700;
 }
 .sales-chart-wdg-dropdown {
@@ -234,7 +239,7 @@
     cursor: pointer;
     z-index: 10;
 }
-.sales-dropdown-el {
+.sales-dropdown-el, .sales-dropdown-el-dark{
     width: 146px;
     padding: 7.5px 0;
     top: 5;
@@ -249,7 +254,12 @@
     font-family: 'Noto Sans';
     font-size: 12px;
 }
-.sales-dropdown-el:hover {
+
+.sales-dropdown-el-dark {
+    background-color: #c5a687;
+}
+
+.sales-dropdown-el:hover, .sales-dropdown-el-dark:hover {
     background-color: #FFD8B0;
 }
 .chart-container {

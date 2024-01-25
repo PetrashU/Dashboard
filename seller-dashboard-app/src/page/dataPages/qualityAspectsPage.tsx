@@ -1,9 +1,16 @@
 import { useAppContext } from '../../AppContext';
+import UnderConstruction from './component/UnderConstruction';
 
 const QualityAspectsPage = () => {
-  const {language, isDarkModeOn} = useAppContext();
+  const { language } = useAppContext();
   return (
-    <div>QualityAspectsPage</div>
+    <div>
+      <h1>
+        {language === 'English' ? "Quality Aspects" : "Jakość Sprzedaży"}
+      </h1>
+      <UnderConstruction />
+    </div>
+
   )
 }
 

@@ -1,10 +1,12 @@
 import { ordersStats } from '../../data/fakedata';
 import './widgets.css';
 import { useAppContext } from '../../AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const OrdersWidg = () => {
 
   const { language, isDarkModeOn } = useAppContext();
+  const navigate = useNavigate();
 
   const translate = (category: string) => {
     switch (category) {
@@ -17,6 +19,10 @@ const OrdersWidg = () => {
       default:
         return category;
     }
+  };
+
+  const handleCategoryClick = (category: string) => {
+    navigate(`/home/orders?category=${category}`);
   };
 
   return (
@@ -35,7 +41,11 @@ const OrdersWidg = () => {
           <tbody>
             {ordersStats.map(order => (
               <tr key={order.id}>
-                <td>{language === 'English' ? order.category : translate(order.category)}</td>
+                <td>
+                  <a href="#" onClick={() => handleCategoryClick(order.category)} style = {{color: 'inherit'}}>
+                    {language === 'English' ? order.category : translate(order.category)}
+                  </a>
+                </td>
                 <td>{order.count}</td>
               </tr>
             ))}

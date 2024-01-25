@@ -1,9 +1,15 @@
 import { useAppContext } from '../../AppContext';
+import UnderConstruction from './component/UnderConstruction';
 
 const ChartPage = () => {
-  const {language, isDarkModeOn} = useAppContext();
+  const { language, isDarkModeOn } = useAppContext();
   return (
-    <div>ChartPage</div>
+    <div>
+      <h1>
+        {language === 'English' ? "ChartPage" : "Wykres"}
+      </h1>
+      <UnderConstruction />
+      </div>
   )
 }
 

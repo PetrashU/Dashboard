@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { reviews, Review } from '../../data/fakedata';
 import { useAppContext } from '../../AppContext';
 import './pages.css'
+import UnderConstruction from './component/UnderConstruction';
 
 const ReviewsPage = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const ReviewsPage = () => {
   const [selectedFilter, setSelectedFilter] = useState(initialFilter);
   const [filteredReviews, setFilteredReviews] = useState<Review[]>([]);
 
-  const { language, isDarkModeOn } = useAppContext();
+  const { language } = useAppContext();
 
   useEffect(() => {
     navigate(`?filter=${selectedFilter}`, { replace: true });
@@ -34,6 +35,7 @@ const ReviewsPage = () => {
 
   return (
     <div>
+      <h1>{language === 'English' ? 'Reviews' : 'Opinie'}</h1>
       <div>
         <button
           onClick={() => handleFilterChange('All')}
@@ -55,7 +57,6 @@ const ReviewsPage = () => {
           {language === 'English' ? 'Negative' : 'Negatywne'}
         </button>
       </div>
-      <h1>{language === 'English' ? 'Reviews' : 'Opinie'}</h1>
       {filteredReviews.length === 0 ? (
         <p>{language === 'English' ? 'No reviews found for this category' : 'Brak opinii w tej kategorii'}</p>
       ) : (
@@ -78,6 +79,7 @@ const ReviewsPage = () => {
           </tbody>
         </table>
       )}
+      <UnderConstruction />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react'
 import { CHART_TYPE, MEASURE_TYPE, TIME_SCOPE } from '../../data/constant'
+import { useAppContext } from '../../AppContext'
 
 type ChartDropdownType = {
     data : string[],
@@ -8,6 +9,7 @@ type ChartDropdownType = {
 }
 
 const ChartDropdown = ({ data, actionType, changeChartProperty } : ChartDropdownType) => {
+  const {isDarkModeOn} = useAppContext();
 
   const handleOnClickedEl = (el : string, index : number) => {
     if(actionType === "chatM") {
@@ -49,7 +51,7 @@ const ChartDropdown = ({ data, actionType, changeChartProperty } : ChartDropdown
         data.map((el, index) => (
           <div 
             key={index}
-            className='sales-dropdown-el'
+            className={isDarkModeOn ? 'sales-dropdown-el-dark' : 'sales-dropdown-el'}
             onClick={() => { handleOnClickedEl(el, index) }}
           >
             { el }
