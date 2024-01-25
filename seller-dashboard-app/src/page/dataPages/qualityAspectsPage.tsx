@@ -1,6 +1,7 @@
-import React from 'react'
+import { useAppContext } from '../../AppContext';
 
 const QualityAspectsPage = () => {
+  const {language, isDarkModeOn} = useAppContext();
   return (
     <div>QualityAspectsPage</div>
   )

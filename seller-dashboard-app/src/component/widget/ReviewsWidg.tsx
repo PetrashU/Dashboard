@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import './widgets.css';
 import { reviews } from '../../data/fakedata';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStar as farStar } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../AppContext';
 
 const ReviewsWidget = () => {
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [visibleReviews, setVisibleReviews] = useState(5);
-  const language = useSelector((state: RootState) => {
-    return state.language.currentLanguage;
-  })
+  const { language, isDarkModeOn } = useAppContext();
+
 
   const reviewsToShow = () => {
     if (selectedFilter === 'All') {
@@ -33,7 +31,7 @@ const ReviewsWidget = () => {
   const nav = useNavigate();
 
   const handleMoreButtonClick = (filter: string) => {
-    nav(`/reviews?filter=${filter}`);
+    nav(`/home/reviews?filter=${filter}`);
   };
 
   const renderStars = (rating: number): JSX.Element[] => {
@@ -55,7 +53,7 @@ const ReviewsWidget = () => {
     <div className="reviews-container">
       <div className="widget-header">
         <div className="widget-title">{language === 'English' ? 'Reviews' : 'Opinie kupujących'}</div>
-        <div className="filter-buttons">
+        <div className={isDarkModeOn ? "filter-buttons-dark" : "filter-buttons"}>
           <button
             className={selectedFilter === 'All' ? 'active' : ''}
             onClick={() => handleFilterChange('All')}
@@ -80,7 +78,7 @@ const ReviewsWidget = () => {
         {reviewsToShow().length === 0 ? (
           <p>No reviews of this category found</p>
         ) : (
-          <table className="reviews-list">
+          <table className={isDarkModeOn ? "reviews-list-dark" : "reviews-list"}>
             <thead>
               <tr>
                 <th>{language === 'English' ? 'RATING' : 'OCENA'}</th>
@@ -104,7 +102,7 @@ const ReviewsWidget = () => {
       </div>
       <div className='redirect-button-container'>
         <button className="redirect-button" onClick={() => handleMoreButtonClick(selectedFilter)}>
-          {language === 'English' ? 'SHOW MORE' : 'ZOBACZ WIĘCEJ'}
+          {language === 'English' ? 'Show more' : 'Pokaż więcej'}
         </button>
       </div>
     </div>

@@ -1,14 +1,10 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
 import { ordersStats } from '../../data/fakedata';
 import './widgets.css';
+import { useAppContext } from '../../AppContext';
 
 const OrdersWidg = () => {
 
-  const language = useSelector((state: RootState) => {
-    return state.language.currentLanguage;
-  })
+  const { language, isDarkModeOn } = useAppContext();
 
   const translate = (category: string) => {
     switch (category) {
@@ -29,7 +25,7 @@ const OrdersWidg = () => {
         {language === 'English' ? ' Orders' : 'Zamówienia'}
       </div>
       <div className='orders-table-container'>
-        <table className='orders-table'>
+        <table className={isDarkModeOn ? "orders-table-dark" : "orders-table"}>
           <thead>
             <tr>
               <th>{language === 'English' ? 'CATEGORY' : 'KATEGORIA'}</th>

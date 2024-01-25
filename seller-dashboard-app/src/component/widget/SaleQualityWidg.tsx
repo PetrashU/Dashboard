@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../redux/store/store'
 import { translateUtil } from '../../util/translateUtil'
 import { useNavigate } from 'react-router-dom'
 import { SALES_PAGE_URL } from '../../data/urls'
+import { useAppContext } from '../../AppContext'
 
 const SaleQualityWidg = () => {
-  const language = useSelector((state : RootState) => {
-      return state.language.currentLanguage;
-  })
+  const {language, isDarkModeOn} = useAppContext();
+
   const data : any = translateUtil({ lang : language, wdg : "saleQualityWidg"})
   const nav = useNavigate();
 
@@ -16,7 +13,7 @@ const SaleQualityWidg = () => {
     <div className='sale-quality-wdg'>
       <div className='widget-title'>{ data?.qualityOfSale }</div>
       <div className='sale-quality-wdg-container'>
-        <table className='orders-table qos-table'>
+        <table className={isDarkModeOn ? "orders-table-dark qos-table" : "orders-table qos-table"}>
           <thead>
             <tr>
               <th>{  data?.ratingCategory }</th>
@@ -39,7 +36,7 @@ const SaleQualityWidg = () => {
           </tbody>
         </table>
         <p>{ data?.overview }</p>
-        <table className='orders-table'>
+        <table className={isDarkModeOn ? "orders-table-dark" : "orders-table"}>
           <tbody>
             <tr>
               <td>{ data?.salesResults }</td>

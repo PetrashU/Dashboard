@@ -1,15 +1,20 @@
-.navbar {
+.navbar, .navbar-darker {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: var(--nav-height);
     border: 1px black solid;
-    background-color: #0060BF;
     color: white;
     font-family: 'Noto Sans';
     font-size: 12px;
     line-height: 16.34px;
     font-weight: 700;
+}
+.navbar {
+    background-color: #0060BF;
+}
+.navbar-darker {
+    background-color: #003972;
 }
 .left-side-nav {
     display: flex;

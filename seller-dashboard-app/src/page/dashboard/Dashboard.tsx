@@ -7,12 +7,15 @@ import SaleQualityWidg from '../../component/widget/SaleQualityWidg'
 import SalesChartWidg from '../../component/widget/SalesChartWidg'
 import { Outlet, useLocation } from 'react-router-dom'
 import { HOME_PAGE_URL } from '../../data/urls'
+import "./dashboard.css";
+import { useAppContext } from '../../AppContext'
 
 const Dashboard = () => {
   const currLocation = useLocation();
   const isChildrenRendered = currLocation.pathname !== HOME_PAGE_URL;
+  const {isDarkModeOn} = useAppContext();
   return (
-    <div className='background'>
+    <div className= {isDarkModeOn ? 'background-dark' : 'background'}>
         <Navbar/>
         {
           isChildrenRendered ? <Outlet/> 

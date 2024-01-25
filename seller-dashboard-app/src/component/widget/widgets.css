@@ -46,7 +46,6 @@
 }
 .widget-title {
     background-color: #80008091;
-    color: black;
     height: 33.42px;
     border-bottom: 1px solid black;
     display: flex;
@@ -57,28 +56,33 @@
     font-size: 12px;
 }
 
-.reviews-list {
+.reviews-list, .reviews-list-dark {
     width: 100%;
     border-collapse: collapse;
     padding: 10px;
     box-sizing: border-box;
+    font-family: 'Noto Sans';
 }
 
-.reviews-list th, .reviews-list td {
+.reviews-list td, th, .reviews-list-dark td, th {
     text-align: left;
     padding: 8px;
     font-size: 12px;
-    font-family: 'Noto Sans';
     font-weight: 400;
 }
-
-.reviews-list th {
+.reviews-list th, .reviews-list-dark th {
     border-bottom: 1px solid black;
     text-align: center;
+}
+.reviews-list-dark th {
+    border-bottom: 1px solid #333333;
 }
 
 .reviews-list td {
     border-bottom: 1px solid black;
+}
+.reviews-list-dark td {
+    border-bottom: 1px solid #333333;
 }
 
 .rating {
@@ -105,12 +109,12 @@
     padding: 15px;
 }
 
-.offers-table, .orders-table {
+.offers-table, .orders-table, .offers-table-dark, .orders-table-dark {
     width: 100%;
     border-collapse: collapse;
 }
 
-.offers-table th, .offers-table td, .orders-table th, .orders-table td {
+.offers-table th, td, .offers-table-dark th, td, .orders-table th, td, .orders-table-dark th, td {
     border: 1px solid black;
     padding: 10px;
     text-align: center;
@@ -118,14 +122,18 @@
     font-family: 'Noto Sans';
     font-weight: 400;
 }
+.offers-table-dark th, td, .orders-table-dark th, td {
+    border: 1px solid #333333;
+}
 
-.filter-buttons {
+
+.filter-buttons, .filter-buttons-dark {
     padding-top: 10px;
     padding-left: 15px;
     display: flex;
 }
 
-.filter-buttons button {
+.filter-buttons button, .filter-buttons-dark button {
     width: 90px;
     height: 30px;
     left: 66.69px;
@@ -142,16 +150,26 @@
     cursor: pointer;
 }
 
-.filter-buttons button + button {
+.filter-buttons-dark button {
+    background: #c5a687;
+    border-color: #575757;
+}
+
+.filter-buttons button + button, .filter-buttons-dark button + button {
     border-left: none;
 }
 
-.filter-buttons button.active {
+.filter-buttons button.active{
     background: #FFD700;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.filter-buttons button:hover {
+.filter-buttons-dark button.active {
+    background: #d3b300;
+    box-shadow: 0px 4px 4px 0px #99999940;
+}
+
+.filter-buttons button:hover, .filter-buttons-dark button:hover {
     background: #ffee8c;
 }
 
@@ -245,4 +263,5 @@
     display: block;
     margin: 0 auto;
     margin-top: 50px;
+    background-color: transparent;
 }

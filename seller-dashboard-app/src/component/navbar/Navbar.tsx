@@ -1,54 +1,48 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import "./navbar.css"
 import { useNavigate } from 'react-router-dom'
 import Dropdown from '../dropdown/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeAcc, logout } from '../../redux/reducer/authSlice';
 import { RootState } from '../../redux/store/store';
-import { toggleDarkMode } from '../../redux/reducer/darkModeSlice';
-import { changeLanguage } from '../../redux/reducer/languageSlice';
+import { useAppContext } from '../../AppContext';
 
 const Navbar = () => {
     const { isAuthenticated, profiles, user } = useSelector((state: RootState) => {
         return state.auth;
     })
-    const { isDarkModeOn } = useSelector((state: RootState) => {
-        return state.darkMode;
-    })
-    const language = useSelector((state: RootState) => {
-        return state.language.currentLanguage;
-    })
+    const {language, isDarkModeOn, toggleLanguage, toggleMode} = useAppContext();
     const dispatch = useDispatch();
 
     const nav = useNavigate();
     const dropdownLang: Record<string,string[]> = {
-        English: ['Polish', 'English'],
-        Polish: ['Angielski', 'Polski'],
+        English: ['Polish'],
+        Polish: ['Angielski'],
     };
 
     useEffect(() => {
         if (!isAuthenticated) {
             nav("/")
         }
-    }, [isAuthenticated])
+    }, [isAuthenticated, nav])
 
     const handleLogout = () => {
         dispatch(logout())
     }
 
     const handleModeChange = () => {
-        dispatch(toggleDarkMode());
+        toggleMode();
     }
 
-    const handleLanguageChange = (newlanguage:string) => {
-        dispatch(changeLanguage(newlanguage));
+    const handleLanguageChange = () => {
+        toggleLanguage();
     }
     const handleAccountChange = (acc : string) => {
         dispatch(changeAcc(acc))
     }
 
     return (
-        <div className='navbar'>
+        <div className={isDarkModeOn ? 'navbar-darker' : 'navbar'}>
             <div className='left-side-nav'>
                 <p className='logged-user'>{user}</p>
                 <Dropdown

@@ -1,6 +1,7 @@
-import React from 'react'
+import { useAppContext } from '../../AppContext';
 
 const OrdersPage = () => {
+  const {language, isDarkModeOn} = useAppContext();
   return (
     <div>OrdersPage</div>
   )

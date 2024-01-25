@@ -4,34 +4,37 @@ import "./login.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 import { login } from '../../redux/reducer/authSlice';
+import { useAppContext } from '../../AppContext';
 type userType = {
-    userName : string,
-    password : string
+    userName: string,
+    password: string
 }
 const initUser = {
-    userName : '',
-    password : ''
+    userName: '',
+    password: ''
 }
 
 const Login = () => {
-    const [user,setUser] = useState<userType>(initUser);
+    const { language, isDarkModeOn } = useAppContext();
+
+    const [user, setUser] = useState<userType>(initUser);
     const dispatchAuth = useDispatch();
-    const isAuthenticated = useSelector((state : RootState) => {
+    const isAuthenticated = useSelector((state: RootState) => {
         return state.auth.isAuthenticated
     })
     const nav = useNavigate();
 
     useEffect(() => {
-        if(isAuthenticated) {
+        if (isAuthenticated) {
             nav('/home')
         }
-    },[isAuthenticated])
+    }, [isAuthenticated, nav])
 
-    const handleOnSubmit = (e : React.MouseEvent<HTMLElement>) => {
+    const handleOnSubmit = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         dispatchAuth(login())
     }
-    
+
     return (
         <div className='login-container'>
             <form className='form-container'>
@@ -40,19 +43,19 @@ const Login = () => {
                 </h2>
                 <div className='form-group-user'>
                     <label id="user">
-                        User
+                        {language === 'English' ? 'User' : 'Użytkownik'}
                     </label>
                     <input
                         id='user'
                         name='user'
                         type='text'
                         value={user.userName}
-                        onChange={(e) => setUser({...user, userName : e.target.value})}
+                        onChange={(e) => setUser({ ...user, userName: e.target.value })}
                     />
                 </div>
                 <div className='form-group-password'>
                     <label htmlFor='password'>
-                        Password
+                        {language === 'English' ? 'Password' : 'Hasło'}
                     </label>
                     <input
                         id='password'
@@ -63,7 +66,7 @@ const Login = () => {
                     />
                 </div>
                 <button onClick={handleOnSubmit}>
-                    ZALOGUJ
+                    {language === 'English' ? 'LOGIN' : 'ZALOGUJ'}
                 </button>
             </form>
         </div>

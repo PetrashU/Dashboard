@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
 import { productSalesData, ProductSale } from '../../data/fakedata';
 import './widgets.css';
+import { useAppContext } from '../../AppContext';
 
 const OffersRankWidget = () => {
   const [filter, setFilter] = useState('Most Popular');
 
-  const language = useSelector((state: RootState) => {
-    return state.language.currentLanguage;
-  })
+  const {language, isDarkModeOn} = useAppContext();
 
   const sortedData = [...productSalesData].sort((a, b) => {
     if (filter === 'Most Popular') {
@@ -24,7 +21,7 @@ const OffersRankWidget = () => {
       <div className='widget-title'>
       {language === 'English' ? ' Offers ranking' : 'Ranking ofert'}
       </div>
-      <div className="filter-buttons">
+      <div className={isDarkModeOn ? "filter-buttons-dark" : "filter-buttons"}>
         <button onClick={() => setFilter('Most Popular')} className={filter === 'Most Popular' ? 'active' : ''}>
         {language === 'English' ? '  MOST POPULAR' : 'NAJCZĘŚCIEJ KUPOWANE'}
          
@@ -34,7 +31,7 @@ const OffersRankWidget = () => {
         </button>
       </div>
       <div className='offers-table-container'>
-        <table className='offers-table'>
+        <table className={isDarkModeOn ? "offers-table-dark" : "offers-table"}>
           <thead>
             <tr>
               <th>{language === 'English' ? 'NAME' : 'NAZWA'}</th>

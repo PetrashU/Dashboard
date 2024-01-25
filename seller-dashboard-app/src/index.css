@@ -5,6 +5,16 @@ body {
     padding: 0;
 }
 
+body.dark-mode {
+    background-color: rgb(23, 22, 26);
+    color: antiquewhite;
+}
+
+body.light-mode {
+    background-color: #FFFFFF;
+    color: black;
+}
+
 :root {
     --bkg-clr : #F9F9F9;
     --default-button-clr : #FF8000;

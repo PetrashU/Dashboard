@@ -32,7 +32,7 @@
     cursor: pointer;
     transform: rotate(180deg);
 }
-.dropdown-element {
+.dropdown-element, .dropdown-element-dark {
     width:85px;
     height: 32px;
     display: flex;
@@ -46,6 +46,9 @@
     line-height: 16.34px;
     font-weight: 700;
 }
-.dropdown-element:hover {
+.dropdown-element-dark {
+    background-color: #003972;
+}
+.dropdown-element:hover, .dropdown-element-dark:hover {
     background-color: #004d99;
 }

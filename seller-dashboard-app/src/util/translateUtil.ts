@@ -79,7 +79,7 @@ const translateSaleQualityWidg = (lang : string) => {
             ratingQualityResult : "20/50",
             qualityCategory : "KATEGORIA JAKOŚCI",
             ratingQualityCategory : "SŁABA",
-            showMore : "Zobacz więcej"
+            showMore : "Pokaż więcej"
         }
     } else if(lang === "English") {
         return {

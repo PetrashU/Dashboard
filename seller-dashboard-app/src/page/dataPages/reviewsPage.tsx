@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { reviews, Review } from '../../data/fakedata';
+import { useAppContext } from '../../AppContext';
 import './pages.css'
 
 const ReviewsPage = () => {
-  const { search } = useLocation();
-  const searchParams = new URLSearchParams(search);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(location.search);
   const initialFilter = searchParams.get('filter') || 'All';
 
   const [selectedFilter, setSelectedFilter] = useState(initialFilter);
   const [filteredReviews, setFilteredReviews] = useState<Review[]>([]);
 
+  const { language, isDarkModeOn } = useAppContext();
+
   useEffect(() => {
+    navigate(`?filter=${selectedFilter}`, { replace: true });
     let filtered;
     if (selectedFilter === 'Positive') {
       filtered = reviews.filter(review => review.stars >= 4);
@@ -21,7 +26,7 @@ const ReviewsPage = () => {
       filtered = reviews;
     }
     setFilteredReviews(filtered);
-  }, [selectedFilter]);
+  }, [selectedFilter, navigate]);
 
   const handleFilterChange = (filter: string) => {
     setSelectedFilter(filter);
@@ -34,31 +39,32 @@ const ReviewsPage = () => {
           onClick={() => handleFilterChange('All')}
           className={selectedFilter === 'All' ? 'active' : ''}
         >
-          All
+          {language === 'English' ? 'All' : 'Wszystkie'}
+
         </button>
         <button
           onClick={() => handleFilterChange('Positive')}
           className={selectedFilter === 'Positive' ? 'active' : ''}
         >
-          Positive
+          {language === 'English' ? 'Positive' : 'Pozytywne'}
         </button>
         <button
           onClick={() => handleFilterChange('Negative')}
           className={selectedFilter === 'Negative' ? 'active' : ''}
         >
-          Negative
+          {language === 'English' ? 'Negative' : 'Negatywne'}
         </button>
       </div>
-      <h1>Reviews</h1>
+      <h1>{language === 'English' ? 'Reviews' : 'Opinie'}</h1>
       {filteredReviews.length === 0 ? (
-        <p>No reviews found for this category.</p>
+        <p>{language === 'English' ? 'No reviews found for this category' : 'Brak opinii w tej kategorii'}</p>
       ) : (
         <table>
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Review</th>
-              <th>Rating</th>
+              <th>{language === 'English' ? 'Product' : 'Produkt'}</th>
+              <th>{language === 'English' ? 'Review' : 'Opinia'}</th>
+              <th>{language === 'English' ? 'Rating' : 'Ocena'}</th>
             </tr>
           </thead>
           <tbody>
